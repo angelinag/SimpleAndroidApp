@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+>
+
+    <EditText
+        android:id="@+id/editA"
+        android:layout_width="429dp"
+        android:layout_height="110dp"
+        android:hint="Vyvedete a"
+        android:inputType="numberSigned|numberDecimal">
+    </EditText>
+
+    <EditText
+        android:id="@+id/editB"
+        android:layout_width="match_parent"
+        android:layout_height="97dp"
+        android:hint="Vyvedete b"
+        android:inputType="numberSigned|numberDecimal">
+    </EditText>
+
+    <EditText
+        android:id="@+id/editC"
+        android:layout_width="match_parent"
+        android:layout_height="102dp"
+        android:hint="Vyvedete c"
+        android:inputType="numberSigned|numberDecimal"></EditText>
+
+    <Button
+        android:id="@+id/btnCalculate"
+        android:layout_width="match_parent"
+        android:layout_height="92dp"
+        android:text="@string/btnText"></Button>
+
+    <TextView
+        android:id="@+id/viewResults"
+        android:layout_width="match_parent"
+        android:layout_height="73dp">
+
+    </TextView>
+</LinearLayout>
