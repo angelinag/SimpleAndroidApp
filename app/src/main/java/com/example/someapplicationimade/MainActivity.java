@@ -2,6 +2,8 @@ package com.example.someapplicationimade;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -13,23 +15,47 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     protected EditText editA, editB, editC;
     protected Button btnCalculate;
+    protected Button btnLog;
     protected TextView viewResults;
+
+    public void CreateDb(){
+        SQLiteDatabase db = null;
+        try{
+            db = SQLiteDatabase.openOrCreateDatabase(getFilesDir().getPath()+"/LOG.db",
+                    null
+            );
+            String createQ =
+                    "CREATE TABLE if not exists Log(" +
+                            "Lice text not null, " +
+                            "Time DATE DEFAULT (datetime('now', 'localtime')) " +
+                            ")";
+            db.execSQL(createQ);
+
+        }
+        catch(Exception e)
+        {
+            Toast.makeText(getApplicationContext(), "Exception" + e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+        }
+        finally {
+            if(db!=null)
+            {
+                db.close();
+                db=null;
+            }
+        }
+    }
 
     interface TLog{
         void Log(String text);
     }
     TLog myLogger = (text) -> {
         SQLiteDatabase db = null;
+        CreateDb();
         try{
             db = SQLiteDatabase.openOrCreateDatabase(getFilesDir().getPath()+"/LOG.db",
-                null
+                    null
             );
-            String createQ =
-                "CREATE TABLE if not exists Log(" +
-                "Lice text not null, " +
-                "Time DATE DEFAULT (datetime('now', 'localtime')) " +
-                ")";
-            db.execSQL(createQ);
+
             String insertQ = "INSERT INTO Log(Lice) VALUES(?)";
             db.execSQL(insertQ, new Object[]{text});
             Toast.makeText(getApplicationContext(), "Log Successful", Toast.LENGTH_LONG).show();
@@ -57,7 +83,14 @@ public class MainActivity extends AppCompatActivity {
         editB = findViewById(R.id.editB);
         editC = findViewById(R.id.editC);
         btnCalculate = findViewById(R.id.btnCalculate);
+        btnLog = findViewById(R.id.btnLog);
+
         viewResults = findViewById(R.id.viewResults);
+
+        btnLog.setOnClickListener((view) -> {
+            Intent i= new Intent(MainActivity.this, ShowLog.class);
+            startActivity(i);
+        });
 
         // set button onclick
 

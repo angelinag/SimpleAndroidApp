@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListView
+        android:id="@+id/simpleList"
+        style="@style/Widget.AppCompat.ListView"
+        android:layout_width="match_parent"
+        android:layout_height="651dp"
+        android:layout_gravity="top"
+        android:background="#9BF4FF"></ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="71dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnClearLog"
+            android:layout_width="211dp"
+            android:layout_height="match_parent"
+            android:background="#85C5F8"
+            android:fontFamily="monospace"
+            android:text="Clear log"></Button>
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="199dp"
+            android:layout_height="71dp"
+            android:background="#426763"
+            android:fontFamily="monospace"
+            android:text="Back"></Button>
+    </LinearLayout>
+
+</LinearLayout>

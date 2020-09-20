@@ -34,6 +34,12 @@
         android:layout_height="92dp"
         android:text="@string/btnText"></Button>
 
+    <Button
+        android:id="@+id/btnLog"
+        android:layout_width="match_parent"
+        android:layout_height="92dp"
+        android:text="See Log"></Button>
+
     <TextView
         android:id="@+id/viewResults"
         android:layout_width="match_parent"
